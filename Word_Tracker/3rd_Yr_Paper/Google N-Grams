@@ -46,7 +46,7 @@ corpora = dict(eng_us_2012=17, eng_us_2009=5, eng_gb_2012=18, eng_gb_2009=6,
         df = df.join(df_)
     return df
     
-    df1 = word_freq(['monocultural', 'monoracial']) 
+df1 = word_freq(['monocultural', 'monoracial']) 
 df1.plot()
 
 df2 = word_freq(['bicultural', 'biracial', 'biethnic'])
