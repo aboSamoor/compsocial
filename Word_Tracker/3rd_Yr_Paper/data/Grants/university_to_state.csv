@@ -156,7 +156,7 @@
 154,NA,national institute on aging
 155,CO,amc cancer research center
 156,NM,university of new mexico
-157,,not applicable
+157,N/A,not applicable
 158,OH,cuyahoga community college
 159,MD,university of maryland eastern shore
 160,CO,university of colorado denver
@@ -215,8 +215,8 @@
 213,WI,"medical cyberworlds, inc."
 214,LA,louisiana state univ a&m col baton rouge
 215,CA,university of california los angeles
-216,PR,ponce school of medicine
-217,PR,university of puerto rico med sciences
+216,US Territories,ponce school of medicine
+217,US Territories,university of puerto rico med sciences
 218,MA,tufts medical center
 219,MA,judge baker children's center
 220,TX,university of houston
@@ -295,64 +295,64 @@
 293,MD,university of maryland baltimore
 294,MD,"interactive drama, inc."
 295,GA,emory university
-,,cedars-sinai medical center
-,,"american cancer society, inc."
-,,dana-farber cancer institute
-,,western consortium for public health
-,,hospital for sick chldrn (toronto)
-,,"oregon social learning center, inc."
-,,california poly state u san luis obispo
-,,wright state university
-,,utah state university
-,,intergenetics incorporated
-,,california pacific med ctr res institute
-,,roswell park cancer institute corp
-,,university of arkansas med scis ltl rock
-,,university of guam
-,,oregon research institute
-,,new york university
-,,beth israel deaconess medical center
-,,harvard university (medical school)
-,,lurie children's hospital of chicago
-,,u of l imperial col of sci/technlgy/med
-,,behavioral health research ctr-southwest
-,,division of basic sciences - nci
-,,children's national medical center
-,,harvard university (sch of public hlth)
-,,university of quebec at montreal
-,,hawaii state department of health
-,,university of texas sw med ctr/dallas
-,,university of texas md anderson can ctr
-,,college at old westbury
-,,university of texas sw med ctr
-,,new mexico highlands university
-,,university of hawaii at hilo
-,,univ of arkansas for med scis
-,,pacific institute for res and evaluation
-,,parkinson's institute
-,,"montefiore medical center (bronx, ny)"
-,,ut md anderson cancer ctr
-,,national institute of diabetes and digestive and kidney diseases
-,,albert einstein col of med yeshiva univ
-,,memorial hospital of rhode island
-,,institute for community research
-,,university of virginia
-,,ut southwestern medical center
-,,university of kansas medical center
-,,"klein buendel, inc."
-,,west virginia university
-,,"national heart, lung, and blood institute"
-,,international agency for res on cancer
-,,university of kansas
-,,la biomed res inst/ harbor ucla med ctr
-,,institute for research on social problem
-,,university of tx md anderson can ctr
-,,"univ of tx hsc, sa"
-,,"broad institute, inc."
-,,university of illinois
-,,weill medical college of cornell univ
-,,loma linda university
-,,"decode genetics, ehf"
-,,montclair state university
-,,california state university fullerton
-,,hebrew rehabilitation center for aged
+296,CA,cedars-sinai medical center
+297,NY,"american cancer society, inc."
+298,MA,dana-farber cancer institute
+299,CA,western consortium for public health
+300,Outside the US,hospital for sick chldrn (toronto)
+301,OR,"oregon social learning center, inc."
+302,CA,california poly state u san luis obispo
+303,OH,wright state university
+304,UT,utah state university
+305,OK,intergenetics incorporated
+306,CA,california pacific med ctr res institute
+307,NY,roswell park cancer institute corp
+308,AR,university of arkansas med scis ltl rock
+309,US Territories,university of guam
+310,OR,oregon research institute
+311,NY,new york university
+312,MA,beth israel deaconess medical center
+313,MA,harvard university (medical school)
+314,IL,lurie children's hospital of chicago
+315,Outside the US,u of l imperial col of sci/technlgy/med
+316,NM,behavioral health research ctr-southwest
+317,MD,division of basic sciences - nci
+318,VA,children's national medical center
+319,MA,harvard university (sch of public hlth)
+320,Outside the US,university of quebec at montreal
+321,HI,hawaii state department of health
+322,TX,university of texas sw med ctr/dallas
+323,TX,university of texas md anderson can ctr
+324,NY,college at old westbury
+325,TX,university of texas sw med ctr
+326,NM,new mexico highlands university
+327,HI,university of hawaii at hilo
+328,AR,univ of arkansas for med scis
+329,MD,pacific institute for res and evaluation
+330,CA,parkinson's institute
+331,NY,"montefiore medical center (bronx, ny)"
+332,TX,ut md anderson cancer ctr
+333,MD,national institute of diabetes and digestive and kidney diseases
+334,NY,albert einstein col of med yeshiva univ
+335,RI,memorial hospital of rhode island
+336,CT,institute for community research
+337,VA,university of virginia
+338,TX,ut southwestern medical center
+339,KS,university of kansas medical center
+340,CO,"klein buendel, inc."
+341,WV,west virginia university
+342,MD,"national heart, lung, and blood institute"
+343,Outside the US,international agency for res on cancer
+344,KS,university of kansas
+345,CA,la biomed res inst/ harbor ucla med ctr
+346,CA,institute for research on social problem
+347,TX,university of tx md anderson can ctr
+348,TX,"univ of tx hsc, sa"
+349,MA,"broad institute, inc."
+350,IL,university of illinois
+351,NY,weill medical college of cornell univ
+352,CA,loma linda university
+353,Outside the US,"decode genetics, ehf"
+354,NJ,montclair state university
+355,CA,california state university fullerton
+356,MA,hebrew rehabilitation center for aged
