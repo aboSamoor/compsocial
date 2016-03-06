@@ -1,0 +1,61 @@
+AB,Abstract,keep
+AN,Accession Number,keep
+AU,Author(s),keep
+BY,Type of Book,keep
+CA,Corporate/Institutional Author,remove
+CC,PsycINFO Classification Code,keep
+CF,Conference,keep
+CH,Chapter Author(s),remove
+CP,Copyright,remove
+CQ,Correspondence Address,remove
+DB,Database,remove
+DO,Digital Object Identifier,remove
+DP,Publication Date,remove
+DT,Document Type,keep
+FO,Format Covered,remove
+GS,Grant/Sponsorship,keep
+IA,Intended Audience,remove
+IB,ISBN,remove
+ID,Key Concepts,keep
+IN,Institution,keep
+IP,Issue,keep
+IS,ISSN Print,remove
+IT,ISSN Electronic,remove
+JN,Journal Name,keep
+LG,Language,keep
+LO,Location,keep
+MA,E-Mail Address,remove
+MD,Methodology,keep
+MH,MeSH Subject Headings,keep
+MO,Publication Month/Season,remove
+NT,Notes,remove
+OC,Other Publishers,remove
+OL,Other Serial Titles,remove
+ON,UMI Order Number,remove
+ORN,Ovid Result Number,remove
+OT,Original Title,keep
+OU,Open URL,remove
+PE,Page Count,keep
+PG,Page(s),keep
+PH,Publication History,remove
+PM,PMID,remove
+PO,Population Group,keep
+PS,Publication Status,keep
+PT,Publication Type,keep
+PU,Publisher,keep
+RF,Cited References,keep
+RV,Reviewed Item,remove
+SI,Special Issue Title,remove
+SM,Supplemental Material DOI,remove
+SO,Source,remove
+SS,Special Section Title,remove
+ST,Book Series,remove
+SV,Supplemental Material,remove
+TC,Chapter Title,remove
+TD,Test DOI,remove
+TI,Title,keep
+TM,Tests & Measures,keep
+UP,Update Code,remove
+VN,Vendor,remove
+VO,Volume,keep
+YR,Date,keep
