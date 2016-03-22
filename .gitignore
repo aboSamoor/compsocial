@@ -55,4 +55,5 @@ target/
 
 Word_Tracker/3rd_Yr_Paper/.ipynb_checkpoints/
 
-*.ipynb
+*csv
+*zip
