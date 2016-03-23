@@ -108,7 +108,7 @@ def get_psycinfo_database():
     if word == "Acronym Key": continue
     df_ = pd.read_csv(file, encoding="iso-8859-1", header=1)
     df_.insert(0, "Term", [word]*len(df_))
-    print(file, len(df_))
+    #print(file, len(df_))
     dfs.append(df_)
   words_df = pd.concat(dfs)[list(column_to_keep)+["Term"]]
   assert len(words_df[words_df.Term == 'biracial']) == 882
