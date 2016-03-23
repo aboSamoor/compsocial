@@ -95,3 +95,21 @@ def word_freq(words1):
     q, word, df_ = getNgrams(word, "eng_2012", 1800, 2010, True, True)
     df = df.join(df_)
   return df
+
+
+def get_psycinfo_database():
+  labels = pd.read_csv("data/PsycInfo/csv/Acronym Key.csv", header=-1, names=["Acronym", "Name", "Keep"])
+  column_to_name = dict(labels.values[:,:2])
+  column_to_keep = labels[labels.Keep=="keep"].Acronym.values
+  dfs = []
+  for file in glob.glob("data/PsycInfo/csv/*csv"):
+    word = path.basename(file).split('.')[0].split('_')[0]
+    if word == "Acronym Key": continue
+    df_ = pd.read_csv(file, encoding="iso-8859-1", header=1)
+    df_.insert(0, "Term", [word]*len(df_))
+    print(file, len(df_))
+    dfs.append(df_)
+  words_df = pd.concat(dfs)[list(column_to_keep)+["Term"]]
+  assert len(words_df[words_df.Term == 'biracial']) == 882
+  words_df = words_df.rename(columns=column_to_name)
+  return words_df
