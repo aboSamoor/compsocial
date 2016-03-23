@@ -9,7 +9,8 @@ from pandas import DataFrame
 import re
 import requests 
 from ast import literal_eval
-
+import csv
+from io import StringIO
 
 class FixedOrderFormatter(ScalarFormatter):
   """Formats axis ticks using scientific notation with a constant order of  magnitude"""
@@ -113,3 +114,20 @@ def get_psycinfo_database():
   assert len(words_df[words_df.Term == 'biracial']) == 882
   words_df = words_df.rename(columns=column_to_name)
   return words_df
+
+
+def MergeCSVs(files):
+  dfs = []
+  for file in files:
+    word = path.basename(file).split('.')[0]
+    text = open(file, "r", encoding="iso-8859-1").read().replace("\r", "\n")
+    df_ = DataFrame.from_dict(list(csv.DictReader(StringIO(text))))
+    df_.insert(0, "word", [word]*len(df_))
+    dfs.append(df_)
+  return pd.concat(dfs)
+
+def GetNSF():
+  return MergeCSVs(glob.glob("data/Grants/NSF/*csv"))
+
+def GetNIH():
+  return MergeCSVs(glob.glob("data/Grants/NIH/*csv"))
