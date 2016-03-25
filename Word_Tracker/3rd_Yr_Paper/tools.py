@@ -99,7 +99,8 @@ def word_freq(words1):
 
 
 def get_psycinfo_database():
-  labels = pd.read_csv("data/PsycInfo/csv/Acronym Key.csv", header=-1, names=["Acronym", "Name", "Keep"])
+  labels = pd.read_csv("data/PsycInfo/csv/Acronym Key.csv", header=-1,
+          names=["Acronym", "Name", "Keep"])
   column_to_name = dict(labels.values[:,:2])
   column_to_keep = labels[labels.Keep=="keep"].Acronym.values
   dfs = []
@@ -126,8 +127,71 @@ def MergeCSVs(files):
     dfs.append(df_)
   return pd.concat(dfs)
 
+
 def GetNSF():
   return MergeCSVs(glob.glob("data/Grants/NSF/*csv"))
 
+
 def GetNIH():
   return MergeCSVs(glob.glob("data/Grants/NIH/*csv"))
+
+
+def BuildTimeSeries(group, term):
+  df = pd.DataFrame(group.Date.value_counts())
+  df = df.rename(columns={"Date":term})
+  df["Year"] = df.index
+  return df
+
+def IsValidYear(x):
+  try:
+    value = int(x)
+    if 1800 < value < 2017:
+      return True
+  except:
+    return False
+  return False
+
+
+def GetTemporalPsyc():
+  psycinfo = get_psycinfo_database()
+  total_pub = pd.DataFrame.from_csv("data/PsycInfo/PsycInfo Articles Review.csv")
+  total_pub["Year"] = [int(x) for x in total_pub.index.year]
+  total_pub.set_index("Year", inplace=True)
+  total_pub.rename(columns={"Articles": "Publications_Count"}, inplace=True)
+  clean_psycinfo = psycinfo[[IsValidYear(x) for x in psycinfo.Date.values]]
+  clean_psycinfo = clean_psycinfo.copy()
+  clean_psycinfo["Year"] = [int(x) for x in clean_psycinfo.Date]
+  clean_psycinfo["value"] = 1 
+  temporal_psyc = clean_psycinfo.pivot_table(index="Year", columns=["Term"], values="value", aggfunc=np.sum)
+  total_counts = total_pub.loc[temporal_psyc.index]
+  temporal_psyc.loc[temporal_psyc.index] = (temporal_psyc.values.T / total_counts.values.flatten()).T
+  return temporal_psyc
+
+
+def GetTemporalNIH():
+  nih = GetNIH()
+  nih_ = nih[["word", "FY"]]
+  nih_ = nih_[[IsValidYear(x) for x in nih_.FY]]
+  nih_["FY"] = [int(x) for x in nih_.FY.values if x.strip()]
+  nih_["value"] = 1
+  temporal_nih = nih_.pivot_table(index="FY", columns=["word"], values="value", aggfunc=np.sum)
+  total_nih = pd.read_csv("data/Grants/processed/nih_grant_numbers.csv")
+  total_nih = total_nih.set_index("year")
+  temporal_nih.loc[temporal_nih.index] = (temporal_nih.values.T / total_nih.values.flatten()).T
+  return temporal_nih
+
+
+def GetTemporalNSF():
+  nsf = GetNSF()
+  nsf_ = nsf[["word", "StartDate"]]
+  nsf_ = nsf_.copy()
+  nsf_["Year"] = [int(x.split("/")[-1]) for x in nsf_.StartDate.values]
+  nsf_ = nsf_[[IsValidYear(x) for x in nsf_.Year]]
+  nsf_["FY"] = [int(x) for x in nsf_.Year.values]
+  nsf_["value"] = 1
+  temporal_nsf = nsf_.pivot_table(index="FY", columns=["word"], values="value", aggfunc=np.sum)
+  total_nsf = pd.read_csv("data/Grants/processed/nsf_grant_numbers.csv")
+  total_nsf = total_nsf.set_index("year")
+  total_nsf = total_nsf.loc[temporal_nsf.index]
+  temporal_nsf.loc[temporal_nsf.index] = (temporal_nsf.values.T / total_nsf.values.flatten()).T
+  return temporal_nsf
