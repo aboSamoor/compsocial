@@ -39,7 +39,7 @@ def load_nyt_json(filename):
 
 
 
-def load_nyt_database():
+def load_nyt_database(norm=True):
   word, database = load_nyt_json("data/NYT_new/bicultural.json")
 
   for file in glob.glob("data/NYT_new/*json"):
@@ -50,7 +50,9 @@ def load_nyt_database():
     database = pd.merge(database, df, on="year", how="outer")
 
   database.set_index("year", inplace=True)
-  values = (database.values.T / database.Total.values).T
+  values = database.values
+  if norm:
+    values = (database.values.T / database.Total.values).T
   values[:, 0] = database.Total.values
   database_norm = pd.DataFrame(data=values, columns=database.columns, index=database.index)
   return database_norm
