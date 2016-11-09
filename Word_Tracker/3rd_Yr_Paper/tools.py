@@ -79,14 +79,14 @@ def getNgrams(query, corpus, startYear, endYear, smoothing, caseInsensitive):
     req = requests.get('http://books.google.com/ngrams/graph', params=params)
     res = re.findall('var data = (.*?);\\n', req.text)
     if res:
-        data = {qry['ngram'].replace(" ", "_"): qry['timeseries']
+        data = {qry['ngram'].strip().replace(" ", "_"): qry['timeseries']
                 for qry in literal_eval(res[0])}
         df = DataFrame(data)
         df.insert(0, 'year', list(range(startYear, startYear+len(df))))
         df.set_index('year', inplace=True)
         if len(df.columns) > 1:
             df = df[list(filter(lambda x:"(All)" in x, df.columns))]
-        df = df.rename(columns={x:x.split("(All)")[0].strip().replace(" ", "_") for x in df.columns})
+        df = df.rename(columns={x:x.split("_(All)")[0].strip().replace(" ", "_") for x in df.columns})
     else:
         df = DataFrame()
     return req.url, params['content'], df
@@ -112,7 +112,6 @@ def get_psycinfo_database():
     if word == "Acronym Key": continue
     df_ = pd.read_csv(file, encoding="iso-8859-1", header=1)
     df_.insert(0, "Term", [word]*len(df_))
-    #print(file, len(df_))
     dfs.append(df_)
   words_df = pd.concat(dfs)[list(column_to_keep)+["Term"]]
   assert len(words_df[words_df.Term == 'biracial']) == 882
